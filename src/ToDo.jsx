@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import "./ToDo.css"
+
 
 export default function ToDo()
 {
@@ -36,56 +38,41 @@ export default function ToDo()
         }
     }
     
-    function DownTask(index)
-    {
-        if (index < tasks.length - 1)
-        {
-            const updatedTasks = [ ...tasks ];
-            [ updatedTasks[ index ], updatedTasks[ index + 1 ] ] =
-            [ updatedTasks[ index + 1 ], updatedTasks[ index ] ]
-            setTasks(updatedTasks)
-        }
-    }
 
     return(
         <>
-            <div>
-                <h1 className="App-title">To-Do APP</h1>
+            <h1 className="App-title">To Do APP</h1>
+            <div className="grid-container">
                 <input
                     type = "text"
-                    classNamename = "taskInput"
+                    className= "item1"
                     placeholder = "Input a New Task"
                     value= {newTask}
                     onChange= {(e)=>{handleInputChange(e)}}
                 />
                 <button
                     onClick={() => AddTask()}
-                    className="addButton" >
+                    className="item2" >
                     Add Task
                 </button>
-            </div>
-            <ol>
+            
                 { tasks.map((task, id) => 
-                    <li key={id}>
-                        <span className="task">{task}</span>
+                    <li key={id} >
+                        <div className="item4">{task}</div>
                         <button
-                            className="moveUp"
+                            className="item5"
                             onClick={() => UpTask(id)} >
-                            Move 👆
+                            👆
                         </button>
                         <button
-                            className="delete"
+                            className="item6"
                             onClick={() => DeleteTask(id)} >
-                            Delete
-                        </button>
-                        <button
-                            className="moveDown"
-                            onClick={() => DownTask(id)} >
-                            Move 👇
+                            🗑️
                         </button>
                     </li>
                 )}
-            </ol>
+                
+            </div>
         </>
     )
 }
