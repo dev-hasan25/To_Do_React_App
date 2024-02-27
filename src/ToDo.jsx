@@ -21,6 +21,12 @@ export default function ToDo()
         }
     }
 
+    function DeleteAllTask()
+    {
+        const updatedTasks = []
+        setTasks(updatedTasks);
+    }
+
     function DeleteTask(index)
     {
         const updatedTasks = tasks.filter((_, id) => id !== index)
@@ -58,19 +64,24 @@ export default function ToDo()
             
                 { tasks.map((task, id) => 
                     <li key={id} >
-                        <div className="item4">{task}</div>
+                        <div className="item3">{task}</div>
                         <button
-                            className="item5"
+                            className="item4"
                             onClick={() => UpTask(id)} >
                             👆
                         </button>
                         <button
-                            className="item6"
+                            className="item5"
                             onClick={() => DeleteTask(id)} >
                             🗑️
                         </button>
                     </li>
                 )}
+                <button
+                    className="item6"
+                    onClick={() => DeleteAllTask()} >
+                    Clear All Tasks
+                </button>
                 
             </div>
         </>
