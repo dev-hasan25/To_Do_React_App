@@ -58,7 +58,8 @@ export default function ToDo()
                 />
                 <button
                     onClick={() => AddTask()}
-                    className="item2" >
+                    className="item2"
+                >
                     Add Task
                 </button>
             
